@@ -64,15 +64,15 @@ class MainActivity : AppCompatActivity() {
 
         val imageCapture = ImageCapture(imageCaptureConfig)
 
-        findViewById(R.id.capture_button).setOnClickListener {
+        findViewById<ImageButton>(R.id.capture_button).setOnClickListener {
             val file = File(externalMediaDirs.first(),
                 "${System.currentTimeMillis()}.jpg")
 
-            imageCapture.takePicture(file, executor,
+            imageCapture.takePicture(file,
                 object : ImageCapture.OnImageSavedListener {
 
                     override fun onError(
-                        imageCaptureError: ImageCapture.ImageCaptureError,
+                        imageCaptureError: ImageCapture.UseCaseError,
                         message: String,
                         exc: Throwable?
                     ) {
@@ -116,7 +116,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onRequestPermissionsResult(
-        requestCode: Int, permissions: Array, grantResults: IntArray) {
+        requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (allPermissionsGranted()) {
                 viewFinder.post { startCamera() }
