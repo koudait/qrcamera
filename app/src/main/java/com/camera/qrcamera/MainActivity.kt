@@ -12,6 +12,9 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
+import androidx.camera.core.impl.ImageCaptureConfig
+import androidx.camera.core.impl.PreviewConfig
+
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import java.io.File
@@ -104,7 +107,7 @@ class MainActivity : AppCompatActivity() {
 
         val rotationDegrees = when(viewFinder.display.rotation) {
             Surface.ROTATION_0 -> 0
-                    Surface.ROTATION_90 -> 90
+            Surface.ROTATION_90 -> 90
             Surface.ROTATION_180 -> 180
             Surface.ROTATION_270 -> 270
             else -> return
